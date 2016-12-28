@@ -12,9 +12,7 @@ import spray.json.pimpAny
 
 import scala.concurrent.Future
 
-trait MongoApi {
-
-  def mongoRepo: MongoRepo
+class MongoApi(val mongoRepo: MongoRepo) {
 
   val routes: Route = {
     pathPrefix("mongo") {

@@ -7,6 +7,7 @@ import org.mongodb.scala._
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
+
 class MongoRepo {
 
   private val mongoClient: MongoClient = MongoClient()
@@ -17,7 +18,6 @@ class MongoRepo {
     val options = new CreateCollectionOptions()
     options.capped(true)
     options.sizeInBytes(1000000L)
-    println("******** isCapped" + options.isCapped)
     val coll: Observable[Completed] = database.createCollection(CollectionName, options)
     val eventualMongoCollection = coll.toFuture().map {
       seqComplete ⇒
